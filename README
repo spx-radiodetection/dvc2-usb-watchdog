@@ -1,0 +1,12 @@
+This module implements a watchdog which triggers if USB_HUB_DET goes low.
+USB_RESET_N is then asserted momentarily.  After this, there is a
+settling period during which the hub detect interrupt will be ignored.
+
+Example device tree:-
+
+dvc2-usb-watchdog {
+        compatible = "dvc2-usb-watchdog";
+        interrupt-parent = <&gpio1>;
+        interrupts = <3 IRQ_TYPE_LEVEL_LOW>;
+        reset-gpios = <&gpio3 22 0>;
+};
